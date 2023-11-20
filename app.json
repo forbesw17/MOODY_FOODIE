@@ -1,0 +1,42 @@
+{
+  "expo": {
+    "name": "MOODY_FOODIE",
+    "slug": "MOODY_FOODIE",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "light",
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.example.MOODY_FOODIE",
+      "config": {
+        "googleMapsApiKey": "AIzaSyDr7rUycuaJqDj79754EJSyNzivWYArP4g"
+      }
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#ffffff"
+      }
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    },
+    "plugins": [
+      [
+        "expo-location",
+        {
+          "locationWhenInUsePermission": "Allow MOODY FOODIE to use your location."
+        }
+      ]
+    ]
+  }
+}
