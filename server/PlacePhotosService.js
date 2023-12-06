@@ -1,20 +1,20 @@
 
-export const fetchPhotoData = async (photoReference) => {
-  
+import axios from "axios";
+
+export const getPlacePhoto = async (photoReference) => {
+
   try {
+    const response = await axios.get(
+      `https://places.googleapis.com/v1/${photoReference}/media?key=${process.env.EXPO_PUBLIC_GOOGLE_PLACES_API_KEY}&maxHeightPx=500&maxWidthPx=500`,
+      {
+        responseType: "arraybuffer", // Explicitly set response type to string
+      }
+    );
+
+    return response.config.url
     
-    const apiUrl = `https://maps.googleapis.com/maps/api/place/photo?maxheight=600&maxwidth=600&photoreference=${photoReference}&key=${process.env.EXPO_PUBLIC_API_KEY}`;
-
-    const response = await fetch(apiUrl);
-
-    if (!response.ok) {
-      throw new Error(`Error in fetchPhotoData: ${response.statusText}`);
-    }
-
-    const data = response;
-    return data;
   } catch (error) {
-    console.error("Error in fetchPhotoData:", error.message);
-    throw error; // Re-throw the error to let the component handle it
+    console.log("error", error);
+    throw error; // rethrow the error to be caught by the calling function
   }
 };

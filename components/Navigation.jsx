@@ -16,6 +16,9 @@ import QuizScreen from "./QuizScreen";
 import SettingsScreen from "./SettingsScreen";
 import ProfileScreen from "./ProfileScreen";
 
+//Context Provider
+import RestaurantProvider from "./RestaurantProvider";
+
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
 
@@ -30,12 +33,14 @@ const AuthStack = () => (
 );
 
 const AppTabs = () => (
-  <Tab.Navigator screenOptions={{headerShown: false}}>
-    <Tab.Screen name="Home" component={HomeScreen} />
-    <Tab.Screen name="Quiz" component={QuizScreen} />
-    <Tab.Screen name="Profile" component={ProfileScreen} />
-    <Tab.Screen name="Settings" component={SettingsScreen} />
-  </Tab.Navigator>
+  <RestaurantProvider>
+    <Tab.Navigator screenOptions={{ headerShown: false }}>
+      <Tab.Screen name="Home" component={HomeScreen} />
+      <Tab.Screen name="Quiz" component={QuizScreen} />
+      <Tab.Screen name="Profile" component={ProfileScreen} />
+      <Tab.Screen name="Settings" component={SettingsScreen} />
+    </Tab.Navigator>
+  </RestaurantProvider>
 );
 
 const Navigation = () => {
@@ -43,7 +48,11 @@ const Navigation = () => {
     <NavigationContainer>
       <Stack.Navigator screenOptions={{ headerShown: false }}>
         <Stack.Screen name="Auth" component={AuthStack} />
-        <Stack.Screen name="AppTabs" component={AppTabs} options={{gestureEnabled: false}} />
+        <Stack.Screen
+          name="AppTabs"
+          component={AppTabs}
+          options={{ gestureEnabled: false }}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );

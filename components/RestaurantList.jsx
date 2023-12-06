@@ -1,34 +1,19 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { StyleSheet, ScrollView, View, Text } from "react-native";
 
-import { fetchNearbyPlaces } from "../server/NearbyPlacesService";
+import { useRestaurantContext } from "./RestaurantProvider";
 
 import Restaurant from "./Restaurant";
 
-const RestaurantList = ({ latitude, longitude }) => {
-  const [restaurants, setRestaurants] = useState([]);
+const RestaurantList = () => {
 
-  useEffect(() => {
-    async function fetchData() {
-      try {
-        const data = await fetchNearbyPlaces(
-          `${latitude},${longitude}`,
-          1500,
-          "restaurant",
-          process.env.EXPO_PUBLIC_API_KEY
-        );
+  const restaurants = useRestaurantContext();
 
-        setRestaurants(data.results || []);
+  console.log(restaurants[0].shortFormattedAddress)
 
-        // Do something with the data in your component
-      } catch (error) {
-        // Handle the error
-        console.error("Error in Restaurant List:", error);
-      }
-    }
-
-    fetchData();
-  }, [latitude, longitude]);
+  if (restaurants === null) {
+    return (<Text>Loading...</Text>);
+  }
 
   return (
     <ScrollView
@@ -40,11 +25,11 @@ const RestaurantList = ({ latitude, longitude }) => {
       {restaurants.map((restaurant, index) => (
         <Restaurant
           key={index}
-          photoID={restaurant.photos[0].photo_reference}
-          name={restaurant.name}
-          price={restaurant.price_level}
+          name={restaurant.displayName.text}
+          price={restaurant.priceLevel}
           rating={restaurant.rating}
-          address={restaurant.vicinity}
+          address={restaurant.shortFormattedAddress}
+          photo={restaurant.photos[0].name}
         />
       ))}
     </ScrollView>
@@ -56,9 +41,7 @@ const styles = StyleSheet.create({
     display: "flex",
     flexGrow: 1,
     alignItems: "center",
-
     backgroundColor: "#003",
-    // backgroundColor: 'white',
     minWidth: "100%",
   },
   title: {

@@ -1,14 +1,39 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { StyleSheet, View, Text, Image } from "react-native";
 
-import ImageCarousel from "./ImageCarousel";
+import { getPlacePhoto } from "../server/PlacePhotosService";
+
 import star from "../assets/star.png";
 
 const Restaurant = (props) => {
 
+  const [photo, setPhoto] = useState('');
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+
+        const photoURL = await getPlacePhoto(props.photo);
+        
+        setPhoto(photoURL);
+
+      } catch (error) {
+        console.error("Image Error:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  if (photo === '') {
+    return;
+  }
+
   return (
     <View style={styles.container}>
-      <ImageCarousel photoID={props.photoID} style={styles.imageContainer} />
+
+      <Image style={styles.image} source={{ uri: photo }} />
+
       <View style={styles.info}>
         <Text style={styles.name}>{props.name}</Text>
 
@@ -16,11 +41,11 @@ const Restaurant = (props) => {
           <Text>{props.rating}</Text>
           <Image source={star} style={styles.star} resizeMode="contain" />
           <Text>
-            {props.price == 1
+            {props.price == "PRICE_LEVEL_INEXPENSIVE"
               ? "$"
-              : props.price == 2
+              : props.price == "PRICE_LEVEL_MODERATE"
               ? "$$"
-              : props.price == 3
+              : props.price == "PRICE_LEVEL_EXPENSIVE"
               ? "$$$"
               : "$$$$"}
           </Text>
@@ -39,9 +64,7 @@ const styles = StyleSheet.create({
     backgroundColor: "white",
 
     borderRadius: 15,
-    // marginTop: 1,
     marginBottom: 20,
-    // padding: 10,
   },
   imageContainer: {
     borderRadius: 10,
@@ -49,9 +72,23 @@ const styles = StyleSheet.create({
     backgroundColor: "gray",
     height: "50%",
   },
+
+  image: {
+    // width: "100%",
+    // height: "70%",
+
+    height: 200,
+    width: '100%',
+
+    // resizeMode: "cover",
+    borderTopLeftRadius: 15,
+    borderTopRightRadius: 15,
+  },
+
   info: {
     padding: 15
   },
+
   detailsContainer: {
     flexDirection: "row",
     alignItems: "center",
@@ -59,11 +96,10 @@ const styles = StyleSheet.create({
 
   name: {
     fontSize: 18,
-    // fontStyle: 'bold',
     fontWeight: "bold",
   },
   star: {
-    // height: 100
+
   },
 });
 

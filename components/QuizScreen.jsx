@@ -1,23 +1,23 @@
-import React from "react";
+import React, { useState } from "react";
 import { StyleSheet, ScrollView, View, Text } from "react-native";
 import FeedHeader from "./FeedHeader";
 import CustomButton from "./UtilComponents/CustomButton";
 
+// Quizzes
+import QuizOptionsScreen from "./QuizOptionsScreen";
+import RandomSelectScreen from "./RandomSelectScreen";
+
 const QuizScreen = () => {
+  
+  const [quiz, setQuiz] = useState('');
+
   return (
     <View style={styles.container}>
       <FeedHeader />
 
-      <View style={styles.quizSection}>
-        <Text style={styles.text}>For the single Moodie Foodie</Text>
-        <CustomButton text="Solo Quiz" style={styles.button} />
 
-        <Text style={styles.text}>For couples and groups</Text>
-        <CustomButton text="Partner Quiz" style={styles.button} />
-
-        <Text style={styles.text}>Can't wait and can't decide?</Text>
-        <CustomButton text="Random Selection" style={styles.button} />
-      </View>
+      {quiz === 'random' ?  <RandomSelectScreen setQuiz={setQuiz}/> : <QuizOptionsScreen setQuiz={setQuiz}/> }
+      
     </View>
   );
 };

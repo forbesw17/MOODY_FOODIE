@@ -1,30 +1,37 @@
 
-export const fetchNearbyPlaces = async (location, radius, type, apiKey) => {
-  
-  const url = process.env.EXPO_PUBLIC_NEARBY_PLACES_URL;
+import axios from "axios";
 
-  const params = {
-    location: location,
-    radius: radius,
-    type: type,
-    key: apiKey,
-  };
-
-  const queryString = Object.keys(params)
-    .map(
-      (key) => `${encodeURIComponent(key)}=${encodeURIComponent(params[key])}`
-    )
-    .join("&");
-
-  const apiUrl = `${url}?${queryString}`;
-
+export const getNearbyPlaces = async (latitude, longitude) => {
   try {
-    const response = await fetch(apiUrl);
-    const data = await response.json();
+    const response = await axios.post(
+      "https://places.googleapis.com/v1/places:searchNearby",
+      {
+        includedTypes: ["restaurant"],
+        maxResultCount: 20,
+        locationRestriction: {
+          circle: {
+            center: {
+              latitude: latitude,
+              longitude: longitude,
+            },
+            radius: 1500.0,
+          },
+        },
+      },
+      {
+        headers: {
+          "Content-Type": "application/json",
+          "X-Goog-Api-Key": process.env.EXPO_PUBLIC_GOOGLE_PLACES_API_KEY,
+          "X-Goog-FieldMask":
+            "places.displayName,places.shortFormattedAddress,places.photos,places.priceLevel,places.rating,places.googleMapsUri",
+        },
+      }
+    );
 
-    return data;
+    return response.data.places;
+
   } catch (error) {
-    console.error("NearbyPlacesError:", error);
-    throw error; // Re-throw the error so that the calling code can handle it
+    console.log("error", error);
+    throw error; // rethrow the error to be caught by the calling function
   }
 };

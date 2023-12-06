@@ -1,19 +1,48 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { View, Image, StyleSheet } from "react-native";
 import Swiper from "react-native-swiper";
-import { fetchPhotoData } from "../server/PlacePhotosService";
+import { getPlacePhoto } from "../server/PlacePhotosService";
 
-const ImageCarousel = ({ photoID }) => {
-  const [photo, setPhoto] = useState([]);
+import { useRestaurantContext } from "./RestaurantProvider";
 
+const ImageCarousel = ({ restaurantIndex }) => {
+
+  const restaurants = useRestaurantContext();
+  const [placePhotosReferences, setPlacePhotosReferences] = useState([]);
+  const [placePhotosURI, setPlacePhotosURI] = useState();
+  
   useEffect(() => {
+
+    setPlacePhotosReferences(restaurants[restaurantIndex].photos);
+
     const fetchData = async () => {
       try {
-        const data = await fetchPhotoData(photoID);
-        setPhoto(data);
+
+        console.log("Searching for Photos");
+
+
+        const resolvedPhotos = await Promise.all(
+          placePhotosReferences.map(async (photoID, index) => {
+            const photo = await getPlacePhoto(photoID.name);
+            return photo;
+          })
+        );
+    
+        setPlacePhotosURI((prev) => [...prev, ...resolvedPhotos]);
+
+        console.log(placePhotosURI);
+
+        // // Use Promise.all to wait for all async operations
+        // const photoPromises = placePhotosReferences.map(async (photoID, index) => {
+        //   // return await getPlacePhoto(photoID.name);
+        //   return getPlacePhoto(photoID.name);
+        // });
+
+        // // const resolvedPhotos = await Promise.all(photoPromises);
+        // setPlacePhotosURI(photoPromises);
+        // // console.log(placePhotosURI);
       } catch (error) {
-        console.error(error);
-        // Handle error or throw it if necessary
+        console.error("Image Carousel Error:", error);
       }
     };
 
@@ -21,12 +50,12 @@ const ImageCarousel = ({ photoID }) => {
   }, []);
 
   return (
-    <Swiper
-      style={styles.wrapper}
-      showsButtons={true}
-    >
+    <Swiper style={styles.wrapper} showsButtons={true}>
       <View style={styles.slide}>
-        <Image source={{ uri: photo.url }} style={styles.image} />
+        {/* {console.log(placePhotosURI)} */}
+        {/* {placePhotosURI.map((photoURI, index) => (
+          <Image source={{ uri: photoURI }} style={styles.image} />
+        ))} */}
       </View>
     </Swiper>
   );
