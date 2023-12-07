@@ -18,7 +18,7 @@
       "supportsTablet": true,
       "bundleIdentifier": "com.example.MOODY_FOODIE",
       "config": {
-        "googleMapsApiKey": "AIzaSyDr7rUycuaJqDj79754EJSyNzivWYArP4g"
+        "googleMapsApiKey": "process.env.EXPO_PUBLIC_GOOGLE_PLACES_API_KEY"
       }
     },
     "android": {
