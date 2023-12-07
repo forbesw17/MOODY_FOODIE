@@ -9,8 +9,6 @@ const RestaurantList = () => {
 
   const restaurants = useRestaurantContext();
 
-  console.log(restaurants[0].shortFormattedAddress)
-
   if (restaurants === null) {
     return (<Text>Loading...</Text>);
   }
