@@ -3,6 +3,9 @@ import React, { useState } from 'react';
 import { View, Text, StyleSheet, ScrollView, useWindowDimensions } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
+//Global Styles
+import { globalStyles } from '../GlobalStyles';
+
 import CustomInput from '../UtilComponents/CustomInput';
 import CustomButton from '../UtilComponents/CustomButton';
 
@@ -59,10 +62,10 @@ const ConfirmEmailScreen = () => {
 
 const styles = StyleSheet.create({
   scrollView: {
-    backgroundColor: '#003'
+    backgroundColor: globalStyles.app.backgroundColor
   },
   container: {
-    backgroundColor: '#003',
+    backgroundColor: globalStyles.app.backgroundColor,
     alignItems: 'center',
     padding: 20,
   },
@@ -75,7 +78,7 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 24,
     fontWeight: 'bold',
-    color: "white",
+    color: globalStyles.app.title.color,
     margin: 10,
   },
   

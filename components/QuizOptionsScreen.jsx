@@ -2,6 +2,9 @@ import React, { useState } from "react";
 import { StyleSheet, ScrollView, View, Text } from "react-native";
 import CustomButton from "./UtilComponents/CustomButton";
 
+//Global Styles
+import { globalStyles } from "./GlobalStyles";
+
 const QuizOptionsScreen = ({ setQuiz }) => {
 
   const changeQuiz = (selectedQuiz) => {
@@ -28,7 +31,7 @@ const styles = StyleSheet.create({
   container: {
     alignItems: "center",
     minWidth: "100%",
-    backgroundColor: "#003",
+    backgroundColor: globalStyles.app.backgroundColor,
   },
   quizSection: {
     width: "100%",
@@ -38,7 +41,7 @@ const styles = StyleSheet.create({
   },
   text: {
     fontSize: 16,
-    color: "white",
+    color: globalStyles.app.title.color,
     marginBottom: 5,
   },
   button: {

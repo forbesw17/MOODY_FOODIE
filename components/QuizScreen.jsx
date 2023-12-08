@@ -3,6 +3,9 @@ import { StyleSheet, ScrollView, View, Text } from "react-native";
 import FeedHeader from "./FeedHeader";
 import CustomButton from "./UtilComponents/CustomButton";
 
+//Global Styles
+import { globalStyles } from "./GlobalStyles";
+
 // Quizzes
 import QuizOptionsScreen from "./QuizOptionsScreen";
 import RandomSelectScreen from "./RandomSelectScreen";
@@ -13,8 +16,7 @@ const QuizScreen = () => {
 
   return (
     <View style={styles.container}>
-      <FeedHeader />
-
+      <Text style={styles.title}>Food Quizzes</Text>
 
       {quiz === 'random' ?  <RandomSelectScreen setQuiz={setQuiz}/> : <QuizOptionsScreen setQuiz={setQuiz}/> }
       
@@ -26,13 +28,16 @@ const styles = StyleSheet.create({
   container: {
     alignItems: "center",
     minWidth: "100%",
-    backgroundColor: "#003",
+    backgroundColor: globalStyles.app.backgroundColor,
   },
-  quizSection: {
-    width: "100%",
-    justifyContent: "center",
-    height: "92%",
-    padding: 15,
+  title: {
+    marginLeft: 20,
+    alignSelf: "flex-start",
+    
+    color: globalStyles.app.title.color,
+    fontSize: globalStyles.app.title.fontSize,
+    fontWeight: 'bold'
+    
   },
   text: {
     fontSize: 16,

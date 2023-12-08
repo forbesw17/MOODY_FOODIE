@@ -1,5 +1,6 @@
 import React from "react";
 import { Text, StyleSheet, Pressable } from "react-native";
+import { globalStyles } from "../GlobalStyles";
 
 const CustomButton = ({
   onPress,
@@ -62,7 +63,7 @@ const styles = StyleSheet.create({
   },
 
   text_SECONDARY: {
-    color: "white",
+    color: globalStyles.customButton.color,
   },
 
   text_TERTIARY: {

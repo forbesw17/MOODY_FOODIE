@@ -1,9 +1,13 @@
 import React, { useState, useEffect, useContext } from "react";
 import { StyleSheet, ScrollView, View, Text } from "react-native";
 
+//Global Styles
+import { globalStyles } from "./GlobalStyles";
+
 import { useRestaurantContext } from "./RestaurantProvider";
 
 import Restaurant from "./Restaurant";
+
 
 const RestaurantList = () => {
 
@@ -39,15 +43,16 @@ const styles = StyleSheet.create({
     display: "flex",
     flexGrow: 1,
     alignItems: "center",
-    backgroundColor: "#003",
+    backgroundColor: globalStyles.app.backgroundColor,
     minWidth: "100%",
   },
   title: {
-    marginLeft: 15,
+    marginLeft: 20,
     alignSelf: "flex-start",
-    fontSize: 24,
+    fontSize: globalStyles.app.title.fontSize,
     marginBottom: 20,
-    color: "white",
+    color: globalStyles.app.title.color,
+    fontWeight: 'bold'
   },
 });
 
