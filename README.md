@@ -1,6 +1,10 @@
 ﻿# MOODY_FOODIE
 A React Native applicaton to assist users with finding nearby restraunts
 
+![MF_Login](https://github.com/forbesw17/MOODY_FOODIE/assets/122941813/4ee30b0a-1de4-4bbd-87b4-41bae545d67d) ![MF_Home](https://github.com/forbesw17/MOODY_FOODIE/assets/122941813/5590175a-d929-4faa-a929-5a09854cc148)
+
+
+
 ## Usage
 Clone the repository
 ```
