@@ -27,7 +27,7 @@ const Restaurant = (props) => {
     };
 
     fetchData();
-  }, []);
+  }, [props.photo]); 
 
   if (photo === '') {
     return;

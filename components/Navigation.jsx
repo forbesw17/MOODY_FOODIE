@@ -15,7 +15,6 @@ import QuizActiveIcon from "../assets/icons/quizActive.png";
 import ProfileActiveIcon from "../assets/icons/profileActive.png";
 import SettingsActiveIcon from "../assets/icons/settingActive.png";
 
-
 //Navigators
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
@@ -56,7 +55,7 @@ const AppTabs = () => (
       screenOptions={{
         headerShown: false,
         tabBarStyle: styles.bottomTabContainer,
-        tabBarShowLabel: false
+        tabBarShowLabel: false,
       }}
     >
       <Tab.Screen
@@ -64,9 +63,9 @@ const AppTabs = () => (
         component={HomeScreen}
         options={{
           tabBarLabelStyle: {
-            color: 'white'
+            color: "white",
           },
-          tabBarIcon: ({focused}) => (
+          tabBarIcon: ({ focused }) => (
             <Image
               source={focused ? HomeActiveIcon : HomeIcon}
               style={{ width: 24, height: 24 }}
@@ -78,7 +77,7 @@ const AppTabs = () => (
         name="Quiz"
         component={QuizScreen}
         options={{
-          tabBarIcon: ({focused}) => (
+          tabBarIcon: ({ focused }) => (
             <Image
               source={focused ? QuizActiveIcon : QuizIcon}
               style={{ width: 24, height: 24 }}
@@ -90,7 +89,7 @@ const AppTabs = () => (
         name="Profile"
         component={ProfileScreen}
         options={{
-          tabBarIcon: ({focused}) => (
+          tabBarIcon: ({ focused }) => (
             <Image
               source={focused ? ProfileActiveIcon : ProfileIcon}
               style={{ width: 24, height: 24 }}
@@ -101,8 +100,8 @@ const AppTabs = () => (
       <Tab.Screen
         name="Settings"
         component={SettingsScreen}
-        options={{ 
-          tabBarIcon: ({focused}) => (
+        options={{
+          tabBarIcon: ({ focused }) => (
             <Image
               source={focused ? SettingsActiveIcon : SettingsIcon}
               style={{ width: 24, height: 24 }}
@@ -135,7 +134,6 @@ const styles = StyleSheet.create({
   },
 
   bottomTabItem: {},
-
 });
 
 export default Navigation;

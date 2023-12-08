@@ -2,7 +2,7 @@ import React from "react";
 import { SafeAreaView, View, StyleSheet } from "react-native";
 import { StatusBar } from "expo-status-bar";
 
-import CustomStatusBar from "./components/CustomStatusBar";
+// import CustomStatusBar from "./components/CustomStatusBar";
 
 import Navigation from "./components/Navigation";
 

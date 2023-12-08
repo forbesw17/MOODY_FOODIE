@@ -32,11 +32,10 @@ const styles = StyleSheet.create({
   title: {
     marginLeft: 20,
     alignSelf: "flex-start",
-
+    marginBottom: 15,
     color: globalStyles.app.title.color,
     fontSize: globalStyles.app.title.fontSize,
     fontWeight: 'bold'
-    
   },
   text: {
     fontSize: 16,

@@ -20,7 +20,7 @@ const QuizOptionsScreen = ({ setQuiz }) => {
         <Text style={styles.text}>For couples and groups</Text>
         <CustomButton text="Partner Quiz" style={styles.button} onPress={() => changeQuiz('partner')} />
 
-        <Text style={styles.text}>Can't wait and can't decide?</Text>
+        <Text style={styles.text}>Want me to pick for you?</Text>
         <CustomButton text="Random Selection" style={styles.button} onPress={() => changeQuiz('random')} />
       </View>
     </View>
@@ -34,18 +34,21 @@ const styles = StyleSheet.create({
     backgroundColor: globalStyles.app.backgroundColor,
   },
   quizSection: {
-    width: "100%",
+    width: "90%",
     justifyContent: "center",
-    height: "92%",
+    height: "95%",
     padding: 15,
   },
   text: {
     fontSize: 16,
     color: globalStyles.app.title.color,
     marginBottom: 5,
+    fontWeight: 'bold'
   },
   button: {
-    marginBottom: 25
+    marginBottom: 25,
+    // width: "100%"
+    width: 350
   },
 });
 
