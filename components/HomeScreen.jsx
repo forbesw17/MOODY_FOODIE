@@ -1,5 +1,5 @@
-import React, { useState, useEffect, useContext } from "react";
-import { ScrollView, View, Text, StyleSheet, Button } from "react-native";
+import React from "react";
+import { View, Text, StyleSheet } from "react-native";
 
 //Global Styles
 import { globalStyles } from "./GlobalStyles";
@@ -14,8 +14,6 @@ const HomeScreen = () => {
 
   return (
     <View style={styles.container}>
-      {/* <FeedHeader /> */}
-
       {restaurants && <RestaurantList />}
       {!restaurants && <Text style={styles.text}>Loading</Text>}
     </View>

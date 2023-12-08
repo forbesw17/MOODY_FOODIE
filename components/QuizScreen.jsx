@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { StyleSheet, ScrollView, View, Text } from "react-native";
-import FeedHeader from "./FeedHeader";
 import CustomButton from "./UtilComponents/CustomButton";
 
 //Global Styles
@@ -33,7 +32,7 @@ const styles = StyleSheet.create({
   title: {
     marginLeft: 20,
     alignSelf: "flex-start",
-    
+
     color: globalStyles.app.title.color,
     fontSize: globalStyles.app.title.fontSize,
     fontWeight: 'bold'

@@ -1,13 +1,12 @@
 import React from 'react';
 import { StyleSheet, ScrollView, View, Text } from 'react-native'
 
-import FeedHeader from './FeedHeader';
 
 const SettingsScreen = () => {
 
     return (
         <ScrollView contentContainerStyle={styles.container} showsVerticalScrollIndicator={false}>
-            <FeedHeader />
+            <Text>Settings</Text>
         </ScrollView>
     );
 };
