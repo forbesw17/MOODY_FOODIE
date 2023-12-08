@@ -1,31 +1,34 @@
-import React from 'react';
-import { StyleSheet, ScrollView, View, Text } from 'react-native'
+import React from "react";
+import { StyleSheet, View, Text } from "react-native";
 
+//Global Styles
+import { globalStyles } from "./GlobalStyles";
+
+import SettingsData from "./SettingsData";
 
 const SettingsScreen = () => {
-
-    return (
-        <ScrollView contentContainerStyle={styles.container} showsVerticalScrollIndicator={false}>
-            <Text>Settings</Text>
-        </ScrollView>
-    );
+  return (
+    <View style={styles.container}>
+      <Text style={styles.title}>Settings</Text>
+      <SettingsData/>
+    </View>
+  );
 };
 
 const styles = StyleSheet.create({
-
-    container: {
-        display: 'flex',
-        flexGrow: 1,
-        // padding: 0,
-        // justifyContent: 'center',
-        alignItems: 'center',
-        // backgroundColor: '#003',
-        backgroundColor: 'white',
-        minWidth: '100%',
-        // minHeight: '100%',
-        // height: 'fit-content'
-    }
-
+  container: {
+    alignItems: "center",
+    minWidth: "100%",
+    backgroundColor: globalStyles.app.backgroundColor,
+  },
+  title: {
+    marginLeft: 20,
+    alignSelf: "flex-start",
+    marginBottom: 15,
+    color: globalStyles.app.title.color,
+    fontSize: globalStyles.app.title.fontSize,
+    fontWeight: "bold",
+  },
 });
 
 export default SettingsScreen;

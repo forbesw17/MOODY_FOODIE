@@ -1,20 +1,19 @@
 
 import React from 'react';
 import { StyleSheet, View, Text, Button } from 'react-native'
-import { useNavigation } from '@react-navigation/native';
+
+//Global Styles
+import { globalStyles } from './GlobalStyles';
+
+import ProfileData from './ProfileData';
 
 const ProfileScreen = () => {
-    const navigation = useNavigation();
 
     return (
-        <View style={styles.container} showsVerticalScrollIndicator={false}>
-            <Button
-            title="Logout"
-            onPress={() => navigation.navigate("Auth", {screen: "Login"})}
-            >
-            Logout
-            </Button>
-            
+        <View style={styles.container}>
+            <Text style={styles.title}>Profile</Text>
+
+            <ProfileData />        
 
         </View>
     );
@@ -23,14 +22,18 @@ const ProfileScreen = () => {
 const styles = StyleSheet.create({
 
     container: {
-        height: '100%',
-        width: '100%',
-        backgroundColor: 'white',
-        
-        borderRadius: 15,
-        marginTop: 1,
-        marginBottom: 20
-    }
+        alignItems: "center",
+        minWidth: "100%",
+        backgroundColor: globalStyles.app.backgroundColor,
+      },
+      title: {
+        marginLeft: 20,
+        alignSelf: "flex-start",
+        marginBottom: 15,
+        color: globalStyles.app.title.color,
+        fontSize: globalStyles.app.title.fontSize,
+        fontWeight: 'bold'
+      },
 
 });
 

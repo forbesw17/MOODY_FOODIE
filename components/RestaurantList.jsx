@@ -22,7 +22,6 @@ const RestaurantList = () => {
       contentContainerStyle={styles.container}
       showsVerticalScrollIndicator={false}
     >
-      <Text style={styles.title}>Near you</Text>
 
       {restaurants.map((restaurant, index) => (
         <Restaurant
@@ -45,14 +44,6 @@ const styles = StyleSheet.create({
     alignItems: "center",
     backgroundColor: globalStyles.app.backgroundColor,
     minWidth: "100%",
-  },
-  title: {
-    marginLeft: 20,
-    alignSelf: "flex-start",
-    fontSize: globalStyles.app.title.fontSize,
-    marginBottom: 20,
-    color: globalStyles.app.title.color,
-    fontWeight: 'bold'
   },
 });
 

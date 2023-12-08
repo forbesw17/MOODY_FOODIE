@@ -1,12 +1,11 @@
 import React from "react";
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet, ActivityIndicator } from "react-native";
 
 //Global Styles
 import { globalStyles } from "./GlobalStyles";
 
 import { useRestaurantContext } from "./RestaurantProvider";
 
-import FeedHeader from "./FeedHeader";
 import RestaurantList from "./RestaurantList";
 
 const HomeScreen = () => {
@@ -14,8 +13,12 @@ const HomeScreen = () => {
 
   return (
     <View style={styles.container}>
+
+      <Text style={styles.title}>Near you</Text>
+
       {restaurants && <RestaurantList />}
-      {!restaurants && <Text style={styles.text}>Loading</Text>}
+      {!restaurants && <ActivityIndicator size="large" color="#5A4AE3"/>}
+
     </View>
   );
 };
@@ -28,9 +31,12 @@ const styles = StyleSheet.create({
     backgroundColor: globalStyles.app.backgroundColor,
   },
   title: {
-    fontSize: 24,
-    marginBottom: 20,
+    marginLeft: 20,
+    alignSelf: "flex-start",
+    fontSize: globalStyles.app.title.fontSize,
+    marginBottom: 15,
     color: globalStyles.app.title.color,
+    fontWeight: 'bold'
   },
   text: {
     alignItems: "center",
