@@ -1,12 +1,13 @@
 import React from "react";
 import {
   View,
-  Text,
   Image,
   StyleSheet,
-  Button,
   useWindowDimensions,
 } from "react-native";
+
+//Global Styles
+import { globalStyles } from "./GlobalStyles";
 
 import homeLogo from "../assets/MoodyFoodieLogoHome.png";
 import profileIcon from "../assets/icons/profile.png";
@@ -39,7 +40,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    backgroundColor: '#003'
+    backgroundColor: globalStyles.app.backgroundColor
   },
   logo: {
     width: "50%",

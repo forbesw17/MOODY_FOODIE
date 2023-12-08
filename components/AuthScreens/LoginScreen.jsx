@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import {
-  StatusBar,
   View,
   Image,
   StyleSheet,
@@ -8,7 +7,11 @@ import {
   useWindowDimensions,
 } from "react-native";
 
+//Global Styles
+import { globalStyles } from "../GlobalStyles";
+
 import logo from "../../assets/MoodyFoodieLogo.png";
+import darklogo from '../../assets/LoadingLogo.png'
 import { useNavigation } from "@react-navigation/native";
 
 import CustomInput from "../UtilComponents/CustomInput";
@@ -39,11 +42,11 @@ const LoginScreen = () => {
   return (
     <ScrollView
       showsVerticalScrollIndicator={false}
-      style={{ backgroundColor: "#003" }}
+      style={{ backgroundColor: globalStyles.app.backgroundColor }}
     >
       <View style={styles.container}>
         <Image
-          source={logo}
+          source={darklogo}
           style={[styles.logo, { height: height * 0.3 }]}
           resizeMode="contain"
         />

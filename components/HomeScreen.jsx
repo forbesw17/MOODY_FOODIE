@@ -1,5 +1,8 @@
-import React, { useState, useEffect, useContext } from "react";
-import { ScrollView, View, Text, StyleSheet, Button } from "react-native";
+import React from "react";
+import { View, Text, StyleSheet } from "react-native";
+
+//Global Styles
+import { globalStyles } from "./GlobalStyles";
 
 import { useRestaurantContext } from "./RestaurantProvider";
 
@@ -11,8 +14,6 @@ const HomeScreen = () => {
 
   return (
     <View style={styles.container}>
-      <FeedHeader />
-
       {restaurants && <RestaurantList />}
       {!restaurants && <Text style={styles.text}>Loading</Text>}
     </View>
@@ -24,17 +25,17 @@ const styles = StyleSheet.create({
   container: {
     height: "100%",
     alignItems: "center",
-    backgroundColor: "#003",
+    backgroundColor: globalStyles.app.backgroundColor,
   },
   title: {
     fontSize: 24,
     marginBottom: 20,
-    color: "white",
+    color: globalStyles.app.title.color,
   },
   text: {
     alignItems: "center",
     justifyContent: "center",
-    color: "white",
+    color: globalStyles.app.title.color,
     fontSize: 20,
   },
 });

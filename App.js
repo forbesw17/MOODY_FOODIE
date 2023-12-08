@@ -2,12 +2,14 @@ import React from "react";
 import { SafeAreaView, View, StyleSheet } from "react-native";
 import { StatusBar } from "expo-status-bar";
 
+import CustomStatusBar from "./components/CustomStatusBar";
+
 import Navigation from "./components/Navigation";
 
 const App = () => {
   return (
     <SafeAreaView style={styles.root}>
-      <StatusBar backgroundColor="#003" />
+      <StatusBar backgroundColor="white" />
       <Navigation />
     </SafeAreaView>
   );
