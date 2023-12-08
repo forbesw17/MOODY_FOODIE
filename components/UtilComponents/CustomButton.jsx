@@ -43,7 +43,8 @@ const styles = StyleSheet.create({
     marginVertical: 5,
 
     alignItems: "center",
-    borderRadius: 5,
+    // borderRadius: 5,
+    borderRadius: 15
   },
 
   container_PRIMARY: {

@@ -17,7 +17,9 @@ export const globalStyles = StyleSheet.create({
 
             //dark mode
             // color: 'white',
-            fontSize: 24
+            // fontSize: 24
+            fontSize: 26
+            // fontSize: 28
         },
         restaurant: {
             backgroundColor: '#5A4AE3',

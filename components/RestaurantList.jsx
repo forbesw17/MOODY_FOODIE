@@ -6,6 +6,7 @@ import { globalStyles } from "./GlobalStyles";
 
 import { useRestaurantContext } from "./RestaurantProvider";
 
+import CustomButton from './UtilComponents/CustomButton';
 import Restaurant from "./Restaurant";
 
 
@@ -33,6 +34,9 @@ const RestaurantList = () => {
           photo={restaurant.photos[0].name}
         />
       ))}
+
+      <CustomButton text="still looking... we'll find you more 😒" type='SECONDARY' style={{width: '90%', marginBottom: 30}} />
+
     </ScrollView>
   );
 };

@@ -1,24 +1,28 @@
 import React from "react";
-import { SafeAreaView, View, StyleSheet } from "react-native";
+import { SafeAreaView, View, StyleSheet, Platform } from "react-native";
 import { StatusBar } from "expo-status-bar";
-
-// import CustomStatusBar from "./components/CustomStatusBar";
 
 import Navigation from "./components/Navigation";
 
 const App = () => {
   return (
-    <SafeAreaView style={styles.root}>
+    <SafeAreaView style={onAndroid ? styles.rootANDROID : styles.rootIOS}>
       <StatusBar backgroundColor="white" />
       <Navigation />
     </SafeAreaView>
   );
 };
 
+const onAndroid = Platform.OS === "ios" ? false : true;
+
 const styles = StyleSheet.create({
-  root: {
+  rootIOS: {
     height: "100%",
   },
+  rootANDROID: {
+    height: "100%",
+    paddingTop: 35
+  }
 });
 
 export default App;

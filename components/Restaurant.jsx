@@ -53,7 +53,10 @@ const Restaurant = (props) => {
               ? "   $$"
               : props.price == "PRICE_LEVEL_EXPENSIVE"
               ? "   $$$"
-              : "   $$$$"}
+              : props.price == "PRICE_LEVEL_VERY_EXPENSIVE"
+              ? "   $$$$"
+              : ""
+            }
           </Text>
         </View>
 
