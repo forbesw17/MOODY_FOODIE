@@ -16,8 +16,7 @@ const HomeScreen = () => {
 
       <Text style={styles.title}>Near you</Text>
 
-      {restaurants && <RestaurantList />}
-      {!restaurants && <ActivityIndicator size="large" color="#5A4AE3"/>}
+      <RestaurantList />
 
     </View>
   );

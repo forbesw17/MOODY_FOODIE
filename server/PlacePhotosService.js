@@ -14,7 +14,6 @@ export const getPlacePhoto = async (photoReference) => {
     return response.config.url
     
   } catch (error) {
-    console.log("error", error);
     throw error; // rethrow the error to be caught by the calling function
   }
 };

@@ -6,37 +6,42 @@ import { globalStyles } from "./GlobalStyles";
 
 import { useRestaurantContext } from "./RestaurantProvider";
 
-import CustomButton from './UtilComponents/CustomButton';
+import CustomButton from "./UtilComponents/CustomButton";
 import Restaurant from "./Restaurant";
 
-
 const RestaurantList = () => {
-
   const restaurants = useRestaurantContext();
-
-  if (restaurants === null) {
-    return (<Text>Loading...</Text>);
-  }
 
   return (
     <ScrollView
       contentContainerStyle={styles.container}
       showsVerticalScrollIndicator={false}
     >
+      {Array.isArray(restaurants) &&
+        restaurants.map((restaurant, index) => {
+          const name = restaurant?.displayName?.text;
+          const price = restaurant?.priceLevel;
+          const rating = restaurant?.rating;
+          const address = restaurant?.shortFormattedAddress;
+          const photo = restaurant?.photos?.[0]?.name;
 
-      {restaurants.map((restaurant, index) => (
-        <Restaurant
-          key={index}
-          name={restaurant.displayName.text}
-          price={restaurant.priceLevel}
-          rating={restaurant.rating}
-          address={restaurant.shortFormattedAddress}
-          photo={restaurant.photos[0].name}
-        />
-      ))}
+          return (
+            <Restaurant
+              key={index}
+              name={name}
+              price={price}
+              rating={rating}
+              address={address}
+              photo={photo}
+            />
+          );
+        })}
 
-      <CustomButton text="still looking... we'll find you more 😒" type='SECONDARY' style={{width: '90%', marginBottom: 30}} />
-
+      <CustomButton
+        text="still looking... we'll find you more 😒"
+        type="SECONDARY"
+        style={{ width: "90%", marginBottom: 30 }}
+      />
     </ScrollView>
   );
 };

@@ -4,10 +4,12 @@ import { StyleSheet, View, Text, Image } from "react-native";
 //Global Styles
 import { globalStyles } from "./GlobalStyles";
 
+// API Services
 import { getPlacePhoto } from "../server/PlacePhotosService";
 
-// import star from "../assets/star.png";
+// Assets
 import ratingStar from '../assets/ratingStar.png';
+import NoPhoto from '../assets/NoPhotoAvailable.jpg';
 
 const Restaurant = (props) => {
 
@@ -22,22 +24,18 @@ const Restaurant = (props) => {
         setPhoto(photoURL);
 
       } catch (error) {
-        console.error("Image Error:", error);
+        setPhoto('');
       }
     };
 
     fetchData();
-  }, [props.photo]); 
-
-  if (photo === '') {
-    return;
-  }
+  }, [props.photo]); // Only re-run the effect if props.photo changes
 
   return (
     <View style={styles.container}>
 
       <View style={styles.imageContainer}> 
-        <Image style={styles.image} source={{ uri: photo }} />
+        {photo !== '' ? <Image style={styles.image} source={{ uri: photo }} /> : <Image style={styles.image} source={NoPhoto} /> }
       </View>
 
       <View style={styles.info}>
@@ -85,7 +83,7 @@ const styles = StyleSheet.create({
     height: '100%',
     width: '100%',
     borderTopLeftRadius: 15,
-    borderTopRightRadius: 15
+    borderTopRightRadius: 15,
   },
 
   info: {
