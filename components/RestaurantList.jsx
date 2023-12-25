@@ -1,5 +1,5 @@
-import React, { useState, useEffect, useContext } from "react";
-import { StyleSheet, ScrollView, View, Text } from "react-native";
+import React from "react";
+import {ScrollView} from "react-native";
 
 //Global Styles
 import { globalStyles } from "./GlobalStyles";
@@ -14,7 +14,7 @@ const RestaurantList = () => {
 
   return (
     <ScrollView
-      contentContainerStyle={styles.container}
+      contentContainerStyle={globalStyles.screen.container}
       showsVerticalScrollIndicator={false}
     >
       {Array.isArray(restaurants) &&
@@ -45,15 +45,5 @@ const RestaurantList = () => {
     </ScrollView>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    display: "flex",
-    flexGrow: 1,
-    alignItems: "center",
-    backgroundColor: globalStyles.app.backgroundColor,
-    minWidth: "100%",
-  },
-});
 
 export default RestaurantList;

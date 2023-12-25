@@ -42,12 +42,12 @@ const LoginScreen = () => {
   return (
     <ScrollView
       showsVerticalScrollIndicator={false}
-      style={{ backgroundColor: globalStyles.app.backgroundColor }}
+      style={globalStyles.auth.scrollView}
     >
-      <View style={styles.container}>
+      <View style={globalStyles.auth.container}>
         <Image
           source={darklogo}
-          style={[styles.logo, { height: height * 0.3 }]}
+          style={[globalStyles.auth.logo, { height: height * 0.3 }]}
           resizeMode="contain"
         />
 
@@ -84,15 +84,3 @@ const LoginScreen = () => {
 };
 
 export default LoginScreen;
-
-const styles = StyleSheet.create({
-  container: {
-    alignItems: "center",
-    padding: 20,
-  },
-  logo: {
-    width: "100%",
-    maxWidth: 400,
-    // height: 100
-  },
-});

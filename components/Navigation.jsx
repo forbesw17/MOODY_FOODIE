@@ -54,7 +54,7 @@ const AppTabs = () => (
     <Tab.Navigator
       screenOptions={{
         headerShown: false,
-        tabBarStyle: styles.bottomTabContainer,
+        tabBarStyle: globalStyles.navigation.bottomTabContainer,
         tabBarShowLabel: false,
       }}
     >
@@ -127,13 +127,5 @@ const Navigation = () => {
     </NavigationContainer>
   );
 };
-
-const styles = StyleSheet.create({
-  bottomTabContainer: {
-    backgroundColor: globalStyles.app.backgroundColor,
-  },
-
-  bottomTabItem: {},
-});
 
 export default Navigation;

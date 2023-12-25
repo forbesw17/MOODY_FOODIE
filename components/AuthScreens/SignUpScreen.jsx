@@ -34,9 +34,9 @@ const SignUpScreen = () => {
   };
 
   return (
-    <ScrollView showsVerticalScrollIndicator={false} style={styles.scrollView}>
-      <View style={styles.container}>
-        <Text style={styles.title}>Create an account</Text>
+    <ScrollView showsVerticalScrollIndicator={false} style={globalStyles.auth.scrollView}>
+      <View style={globalStyles.auth.container}>
+        <Text style={globalStyles.auth.title}>Create an account</Text>
 
         <CustomInput
           placeholder="Username"
@@ -62,13 +62,13 @@ const SignUpScreen = () => {
 
         <CustomButton text="Register" onPress={onRegisterPressed} />
 
-        <Text style={styles.text}>
+        <Text style={globalStyles.auth.text}>
           By registering, you confirm that you accept out{" "}
-          <Text style={styles.link} onPress={onTermsOfUsePressed}>
+          <Text style={globalStyles.auth.link} onPress={onTermsOfUsePressed}>
             Terms of Use
           </Text>{" "}
           and{" "}
-          <Text style={styles.link} onPress={onPrivacyPressed}>
+          <Text style={globalStyles.auth.link} onPress={onPrivacyPressed}>
             Privacy Policy
           </Text>
         </Text>
@@ -84,36 +84,5 @@ const SignUpScreen = () => {
     </ScrollView>
   );
 };
-
-const styles = StyleSheet.create({
-  scrollView: {
-    backgroundColor: globalStyles.app.backgroundColor
-  },
-  container: {
-    alignItems: "center",
-    padding: 20,
-  },
-  logo: {
-    width: "100%",
-    maxWidth: 400,
-    // height: 100
-  },
-
-  title: {
-    fontSize: 24,
-    fontWeight: "bold",
-    color: globalStyles.app.title.color,
-    margin: 10,
-  },
-
-  text: {
-    color: "gray",
-    marginVertical: 10,
-  },
-
-  link: {
-    color: "#00ae7f",
-  },
-});
 
 export default SignUpScreen;

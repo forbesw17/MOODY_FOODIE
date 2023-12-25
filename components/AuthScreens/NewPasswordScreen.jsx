@@ -24,9 +24,9 @@ const NewPasswordScreen = () => {
   };
 
   return (
-    <ScrollView showsVerticalScrollIndicator={false} style={styles.scrollView}>
-      <View style={styles.container}>
-        <Text style={styles.title}>Reset your password</Text>
+    <ScrollView showsVerticalScrollIndicator={false} style={globalStyles.auth.scrollView}>
+      <View style={globalStyles.auth.container}>
+        <Text style={globalStyles.auth.title}>Reset your password</Text>
 
         <CustomInput placeholder="Enter code" value={code} setValue={setCode} />
 
@@ -48,36 +48,5 @@ const NewPasswordScreen = () => {
   );
 };
 
-const styles = StyleSheet.create({
-  scrollView: {
-    backgroundColor: globalStyles.app.backgroundColor
-  },
-  container: {
-    alignItems: "center",
-    padding: 20,
-    backgroundColor: globalStyles.app.backgroundColor
-  },
-  logo: {
-    width: "100%",
-    maxWidth: 400,
-    // height: 100
-  },
-
-  title: {
-    fontSize: 24,
-    fontWeight: "bold",
-    color: globalStyles.app.title.color,
-    margin: 10,
-  },
-
-  text: {
-    color: "gray",
-    marginVertical: 10,
-  },
-
-  link: {
-    color: "#FDB075",
-  },
-});
 
 export default NewPasswordScreen;

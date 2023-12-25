@@ -27,10 +27,10 @@ const ForgotPasswordScreen = () => {
     console.warn("Resend")
   }
   return (
-    <ScrollView showsVerticalScrollIndicator={false} style={styles.scrollView}>
-    <View style={styles.container}>
+    <ScrollView showsVerticalScrollIndicator={false} style={globalStyles.auth.scrollView}>
+    <View style={globalStyles.auth.container}>
 
-      <Text style={styles.title}>Reset your password</Text>
+      <Text style={globalStyles.auth.title}>Reset your password</Text>
 
       <CustomInput
         placeholder='Username'
@@ -57,37 +57,5 @@ const ForgotPasswordScreen = () => {
     </ScrollView>
   );
 }
-
-const styles = StyleSheet.create({
-  scrollView: {
-    backgroundColor: globalStyles.app.backgroundColor
-  },
-  container: {
-    alignItems: 'center',
-    padding: 20,
-  },
-  logo: {
-    width: '100%',
-    maxWidth: 400,
-    // height: 100
-  },
-
-  title: {
-    fontSize: 24,
-    fontWeight: 'bold',
-    color: globalStyles.app.title.color,
-    margin: 10,
-  },
-  
-  text: {
-    color: 'gray',
-    marginVertical: 10
-  },
-
-  link: {
-    color: '#FDB075'
-  }
-});
-
 
 export default ForgotPasswordScreen;

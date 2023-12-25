@@ -6,7 +6,7 @@ import CustomButton from "./UtilComponents/CustomButton";
 import { globalStyles } from "./GlobalStyles";
 
 // Quizzes
-import QuizOptionsScreen from "./QuizOptionsScreen";
+import QuizOptions from "./QuizOptions";
 import RandomSelectScreen from "./RandomSelectScreen";
 
 const QuizScreen = () => {
@@ -14,37 +14,13 @@ const QuizScreen = () => {
   const [quiz, setQuiz] = useState('');
 
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Food Quizzes</Text>
+    <View style={globalStyles.screen.container}>
+      <Text style={globalStyles.screen.title}>Food Quizzes</Text>
 
-      {quiz === 'random' ?  <RandomSelectScreen setQuiz={setQuiz}/> : <QuizOptionsScreen setQuiz={setQuiz}/> }
+      {quiz === 'random' ?  <RandomSelectScreen setQuiz={setQuiz}/> : <QuizOptions setQuiz={setQuiz}/> }
       
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    alignItems: "center",
-    minWidth: "100%",
-    backgroundColor: globalStyles.app.backgroundColor,
-  },
-  title: {
-    marginLeft: 20,
-    alignSelf: "flex-start",
-    marginBottom: 15,
-    color: globalStyles.app.title.color,
-    fontSize: globalStyles.app.title.fontSize,
-    fontWeight: 'bold'
-  },
-  text: {
-    fontSize: 16,
-    color: "white",
-    marginBottom: 5,
-  },
-  button: {
-    marginBottom: 25
-  },
-});
 
 export default QuizScreen;

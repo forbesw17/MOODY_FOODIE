@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from "react";
 import {
-  StyleSheet,
   ScrollView,
-  View,
   Text,
   ActivityIndicator,
 } from "react-native";
@@ -33,16 +31,15 @@ const RandomSelectScreen = ({ setQuiz }) => {
   };
 
   return (
-    <View style={styles.container}>
+    <ScrollView contentContainerStyle={globalStyles.screen.contentContainer}>
       <Text
-        style={[styles.text, styles.backNavigator]}
+        style={globalStyles.screen.text}
         onPress={() => setQuiz("")}
       >
         ← Back to Quizzes
       </Text>
 
-      <ScrollView contentContainerStyle={styles.contentContainer}>
-        <Text style={styles.text}>Here's what we picked for you...</Text>
+        <Text style={globalStyles.screen.text}>Here's what we picked for you...</Text>
 
         {randomKey && restaurants ? (
           <>
@@ -54,7 +51,7 @@ const RandomSelectScreen = ({ setQuiz }) => {
               photo={restaurants[randomKey].photos[0].name}
             />
             <CustomButton
-              style={styles.button}
+              style={globalStyles.screen.button}
               text="Re-roll"
               onPress={() =>
                 setRandomKey(
@@ -67,45 +64,12 @@ const RandomSelectScreen = ({ setQuiz }) => {
           </>
         ) : (
           <ActivityIndicator
-            style={styles.activity}
             size="large"
             color="#5A4AE3"
           />
         )}
       </ScrollView>
-    </View>
   );
 };
-
-const styles = StyleSheet.create({
-  contentContainer: {
-    height: "95%",
-    alignItems: "left",
-    marginTop: 40,
-    marginLeft: 20,
-    backgroundColor: globalStyles.app.backgroundColor,
-    minWidth: "100%",
-  },
-  backNavigator: {
-    marginLeft: 20,
-  },
-  text: {
-    fontSize: 16,
-    color: globalStyles.app.title.color,
-    marginBottom: 15,
-    fontWeight: "bold",
-  },
-  button: {
-    width: "90%",
-  },
-
-  activity: {
-    height: 300,
-    // differential compared to container
-    marginLeft: -40,
-
-    alignSelf: "center",
-  },
-});
 
 export default RandomSelectScreen;
