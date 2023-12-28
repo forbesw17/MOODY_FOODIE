@@ -14,7 +14,7 @@ export const getNearbyPlaces = async (latitude, longitude) => {
               latitude: latitude,
               longitude: longitude,
             },
-            radius: 2000.0,
+            radius: 3000.0,
           },
         },
       },
